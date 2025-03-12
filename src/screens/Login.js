@@ -13,7 +13,7 @@ export default function Login({ navigation }) {
         .then(
             (response) => {
                 console.log(response.data.message)
-                Alert.alert(response.data.message)
+                navigation.navigate("Home")
             }, (error) => {
                 console.log(error)
                 Alert.alert(error.response.data.error)
@@ -40,6 +40,7 @@ export default function Login({ navigation }) {
             <TouchableOpacity onPress = {handleLogin} style={styles.button}>
                 <Text>Login</Text>
             </TouchableOpacity>
+            
             <Button title="Cadastro" onPress={()=> navigation.navigate("Cadastro")}/>
         </View>
     )
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     button: {
-        backgroundColor: 'green',
+        backgroundColor: '#006400',
         padding: 10,
         borderRadius: 5,
     }
