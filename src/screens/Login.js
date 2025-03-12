@@ -16,7 +16,7 @@ export default function Login({ navigation }) {
                 Alert.alert(response.data.message)
             }, (error) => {
                 console.log(error)
-                Alert.alert('Error', error.response.data.error)
+                Alert.alert(error.response.data.error)
             }
         )
     }
