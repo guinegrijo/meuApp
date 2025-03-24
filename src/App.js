@@ -6,15 +6,24 @@ import OrganizadorScreen from "./screens/Organizador"
 import IngressoScreen from "./screens/Ingresso"
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack"
+import Layout from "./components/Layout";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen}/>
-        <Stack.Screen name="Cadastro" component={CadastroScreen}/>
+      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName="Login">
+        <Stack.Screen name="Login" component={()=>(
+          <Layout>
+            <LoginScreen/>
+          </Layout>
+        )}/>
+        <Stack.Screen name="Cadastro" component={()=>(
+          <Layout>
+            <CadastroScreen/>
+          </Layout>
+        )}/>
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Evento" component={EventoScreen}/>
         <Stack.Screen name="Organizador" component={OrganizadorScreen}/>

@@ -2,8 +2,13 @@ import React, {useState} from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, Button } from "react-native";
 import api from "../axios/axios"
 import {Ionicons} from "@expo/vector-icons"
+import {useNavigation} from "@react-navigation/native"
 
-export default function Login({ navigation }) {
+
+export default function Login() {
+
+    const navigation = useNavigation()
+
     const [user, setUser] = useState({
         email: '',
         password: '',
@@ -26,13 +31,15 @@ export default function Login({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Faça Login</Text>
-            <TextInput
-                placeholder="E-mail"
-                value={user.email}
-                onChangeText={(value) => {setUser({...user, email: value})}}
-                style={styles.input}
-            />
 
+            <View style={styles.emailContainer}>
+                <TextInput
+                    placeholder="E-mail"
+                    value={user.email}
+                    onChangeText={(value) => {setUser({...user, email: value})}}
+                    style={styles.emailInput}
+                />
+            </View>
             
 
             <View style={styles.passwordContainer}>
@@ -70,15 +77,6 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: 'bold'
     },
-    input: {
-        width: '90%',
-        height: 50,
-        borderBottomWidth: 1,
-        marginTop:20,
-        marginBottom: 20,
-        paddingHorizontal: 10,
-        fontSize: 20
-    },
     button: {
         backgroundColor: '#006400',
         padding: 10,
@@ -91,7 +89,18 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingRight: 10,
     },
+    emailContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        borderBottomWidth: 1,
+        width: "100%",
+        paddingRight: 10,
+    },
     passwordInput: {
+        flex: 1,
+        height: 40,
+    },
+    emailInput: {
         flex: 1,
         height: 40,
     }
