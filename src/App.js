@@ -1,7 +1,7 @@
 import LoginScreen from "./screens/Login";
 import CadastroScreen from "./screens/Cadastro";
 import HomeScreen from "./screens/Home"
-import Evento from "./screens/Evento"
+import CadastroEvento from "./screens/CadastroEvento"
 import OrganizadorScreen from "./screens/Organizador"
 import IngressoScreen from "./screens/Ingresso"
 import { NavigationContainer } from "@react-navigation/native";
@@ -38,7 +38,7 @@ export default function App() {
         </Stack.Screen>
 
         <Stack.Screen name="Home" component={HomeScreen}/>
-        <Stack.Screen name="Evento" component={Evento}/>
+        <Stack.Screen name="CadastroEvento" component={CadastroEvento}/>
         <Stack.Screen name="Organizador" component={OrganizadorScreen}/>
         <Stack.Screen name="Ingresso" component={IngressoScreen}/>
       </Stack.Navigator>

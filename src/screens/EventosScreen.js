@@ -10,6 +10,8 @@ import {
   ActivityIndicator,
   TextInput
 } from "react-native";
+import * as SecureStore from 'expo-secure-store'
+import { useNavigation } from "@react-navigation/native"
 
 export default function EventoScreen() {
   const [eventos, setEventos] = useState([]);
@@ -49,6 +51,8 @@ export default function EventoScreen() {
   }, []);
 
   async function getEventos() {
+    const token = await SecureStore.getItemAsync("token")
+    console.log(token)
     try {
       const response = await api.getEventos();
       console.log(response.data);
@@ -70,9 +74,17 @@ export default function EventoScreen() {
     }
   }
 
+  const navigation = useNavigation()
+
   return (
     <View style={styles.container}>
+
+      <TouchableOpacity onPress={()=>{navigation.navigate("CadastroEvento")}}>
+        <Text>Criar novo evento</Text>
+      </TouchableOpacity>
+
       <Text style={styles.title}>Eventos disponíveis</Text>
+
       {loading ? (
         <ActivityIndicator size="large" color="blue" />
       ) : (

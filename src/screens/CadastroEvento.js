@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import api from "../axios/axios"
+import DateTimePickerDefault from "../components/DateTimePicker";
 
 export default function Evento() {
 
@@ -50,11 +51,17 @@ export default function Evento() {
                 style={styles.input}
             />
 
-            <TextInput
-                placeholder="Data e hora"
-                value={evento.data_hora}
-                onChangeText={(value) => {setEvento({...evento, data_hora: value})}}
-                style={styles.input}
+            <DateTimePickerDefault
+                type={"datetime"}
+                buttonTitle={
+                    evento.data_hora === "" ?(
+                        "Selecione a data do Evento"
+                    ) : (
+                        evento.data_hora.toLocaleString()
+                    )
+                }
+                setValue={setEvento}
+                dateKey={"data_hora"}
             />
 
             <TextInput
